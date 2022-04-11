@@ -1,8 +1,6 @@
 <template>
     <div>
-        <nav-header></nav-header>
-        <router-view></router-view>
-        <nav-footer></nav-footer>
+        nav-header
     </div>
 </template>
 
@@ -10,7 +8,7 @@
 
 <script>
     export default{
-        name:'nav-header'
+        name:'nav-header'   
     }
 
 </script>
