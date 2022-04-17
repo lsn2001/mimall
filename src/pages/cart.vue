@@ -13,7 +13,7 @@ import OrderHeader from './../components/OrderHeader'
 import NavFooter from './../components/NavFooter.vue'
 
     export default{
-        name:'cart',
+        name:"cart",
         components:{
             OrderHeader,
             NavFooter

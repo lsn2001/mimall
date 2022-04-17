@@ -6,14 +6,16 @@
 </template>
 
 <script>
-
+import storage from './storage/index'
 export default {
   name: 'App',
   components: {
     
   },
   mounted(){
-      
+     //storage.setItem('username',{"name":"jack"},'user'); 
+     //storage.setItem('sex',1);
+     //storage.clear("sex",'user');
   }
 }
 </script>
