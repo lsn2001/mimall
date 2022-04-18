@@ -2,8 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
-import VueAxios from 'vue-axios'
-import env from './env'
+import VueAxios from 'vue-axios' // 可以将axios对象挂载到Vue实例上 
+// import env from './env'
 
 // 根据前端跨域的方式做调整  /a/b : /api/a/b => /a/b
 /* 
@@ -12,13 +12,13 @@ import env from './env'
     如果前后端地址不一致，则需要写上完整的地址路径
 
 */
-axios.defaults.baseURL = '/api';
+// axios.defaults.baseURL = '/api';
 
 // 设置超时时间 8000毫秒 = 8秒
 axios.defaults.timeout = 8000; 
 
 // 根据环境变量获取不同的请求地址
-axios.defaults.baseURL = env.baseURL;
+// axios.defaults.baseURL = env.baseURL;
 
 //如果需要拦截请求信息 则使用axios.interceptors.request.use()
 
