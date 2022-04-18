@@ -2,8 +2,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
-import VueAxios from 'vue-axios' // 可以将axios对象挂载到Vue实例上 
+import VueAxios from 'vue-axios' // 可以将axios对象挂载到Vue实例上
 // import env from './env'
+
+const mock = false;
+if (mock) {
+  // 这里需要用require 不用import import是预编译加载，编译的时候就会加载 而我们不希望永远被拦截
+  require('./mock/api');
+}
 
 // 根据前端跨域的方式做调整  /a/b : /api/a/b => /a/b
 /* 
@@ -12,8 +18,14 @@ import VueAxios from 'vue-axios' // 可以将axios对象挂载到Vue实例上
     如果前后端地址不一致，则需要写上完整的地址路径
 
 */
-// axios.defaults.baseURL = '/api';
 
+
+
+// 通过easy-mock平台实现数据mock 把baseURL设置easy-mock网站上的baseURL
+ axios.defaults.baseURL = ' https://mock.mengxuegu.com/mock/625dab8266abf914b1f1c0d6/mimall';
+
+
+//axios.defaults.baseURL = '/api';
 // 设置超时时间 8000毫秒 = 8秒
 axios.defaults.timeout = 8000; 
 
