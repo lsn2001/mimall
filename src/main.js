@@ -22,10 +22,10 @@ if (mock) {
 
 
 // 通过easy-mock平台实现数据mock 把baseURL设置easy-mock网站上的baseURL
- axios.defaults.baseURL = ' https://mock.mengxuegu.com/mock/625dab8266abf914b1f1c0d6/mimall';
+// axios.defaults.baseURL = ' https://mock.mengxuegu.com/mock/625dab8266abf914b1f1c0d6/mimall';
 
 
-//axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = '/api';
 // 设置超时时间 8000毫秒 = 8秒
 axios.defaults.timeout = 8000; 
 

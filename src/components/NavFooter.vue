@@ -1,6 +1,16 @@
 <template>
-    <div>
-       nav-footer
+    <div class="footer">
+       <!-- <div class="footer-logo">
+           <img src="imgs\logo-footer.png" alt="">
+           <p>小米商城</p>
+       </div>
+       <div class="footer-link">
+           <a href="#">小米商城</a><span>|</span>
+           <a href="#">MIUI</a><span>|</span>
+           <a href="#">米家</a><span>|</span>
+           <a href="#">米聊</a><span>|</span>
+       </div> -->
+       
     </div>
 </template>
 
@@ -12,3 +22,37 @@
     }
 
 </script>
+<style lang="scss">
+   /*  .footer{
+        margin-top: 500px;
+        width: auto;
+        height: 234px;
+        background-color: #333333;
+        border-top: 4px solid #FF6600;
+        font-size: 16px;
+        color: #999999;
+        text-align: center;
+        .footer-logo{
+            margin-top: 46px;
+            margin-bottom: 31px;
+            img{
+                width: 53px;
+                height: 36px; 
+                margin-bottom: 13px;
+            }
+        }
+        .footer-link{
+            a{
+                color:#999999;
+                display: inline-block;
+            }
+            span{
+                margin: 0 10px;
+            }
+            margin-bottom: 13px;
+        }
+        
+        
+        
+    } */
+</style>

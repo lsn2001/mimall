@@ -1,0 +1,20 @@
+// 定义一个函数来传大量重复的CSS样式 
+
+// flex布局复用
+@mixin flex($hov:space-between,$col:center) {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+@mixin bgImg($w:0,$h:0,$img:'',$size:contain){
+    display:inline-block;
+    width:$w;
+    height:$h;
+    background: url($img) no-repeat center; /* 填充和居中 */
+    
+    background-size: $size;    
+    
+}
+
+
