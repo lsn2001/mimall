@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-       <!-- <div class="footer-logo">
+       <div class="footer-logo">
            <img src="imgs\logo-footer.png" alt="">
            <p>小米商城</p>
        </div>
@@ -9,7 +9,7 @@
            <a href="#">MIUI</a><span>|</span>
            <a href="#">米家</a><span>|</span>
            <a href="#">米聊</a><span>|</span>
-       </div> -->
+       </div>
        
     </div>
 </template>
@@ -23,7 +23,7 @@
 
 </script>
 <style lang="scss">
-   /*  .footer{
+    .footer{
         margin-top: 500px;
         width: auto;
         height: 234px;
@@ -54,5 +54,5 @@
         
         
         
-    } */
+    }
 </style>
