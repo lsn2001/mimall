@@ -8,7 +8,7 @@ module.exports = defineConfig({
 module.exports = {
     devServer: {
         host: 'localhost',
-        port: 8082,
+        port: 8080,
 
         // 代理 当你访问到/a接口 实际上底层帮你转发到了/b接口上    
         proxy: {

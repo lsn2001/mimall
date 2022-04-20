@@ -24,7 +24,7 @@
 </script>
 <style lang="scss">
     .footer{
-        margin-top: 500px;
+        
         width: auto;
         height: 234px;
         background-color: #333333;
