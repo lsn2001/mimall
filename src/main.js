@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios' // 可以将axios对象挂载到Vue实例上
+import VueLazyload from 'vue-lazyload'
 // import env from './env'
 
 const mock = false;
@@ -52,6 +53,10 @@ axios.interceptors.response.use(function (response) {
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
+// 图片加载过程中会有加载动画
+Vue.use(VueLazyload, {
+  loading:'/imgs/loading-svg/loading-bubbles.svg'
+});
 new Vue({
   // 定义完路由 我们还需要在main.js 加载router
   // 名字一样时可以省略 属性: 的格式 
