@@ -11,11 +11,11 @@
                 <div class="topbar-user">
                     <!-- 判断是否为用户名 是则显示用户名 否则显示登录 -->
                     <a href="javascript:;" v-if="username">{{username}}</a>
-                     <a href="javascript:;" v-if="!username">登录</a>
-
-                      <a href="javascript:;" v-if="username">我的订单</a>
+                    <a href="javascript:;" v-if="!username" @click="goToLogin">登录</a>
+                    <a href="javascript:;" @click="exit" v-if="username">退出</a>
+                    <a href="javascript:;" v-if="username">我的订单</a>
                     <a href="javascript:;" v-if="!username">注册</a>
-                    <a href="javascript:;" class="my-cart" @click="goToCart"><span class="icon-cart"></span>购物车</a>
+                    <a href="javascript:;" class="my-cart" @click="goToCart"><span class="icon-cart"></span>购物车({{cartCount}})</a>
                 </div>
             </div>            
         </div>
@@ -96,10 +96,19 @@
         // 为什么data一定是函数 定义局部data 只服务于当前vue组件 防止数据串用
         data(){
             return {
-                username:'jack',
+                
                 phoneList:[],
                 RedphoneList:[],
                 TV:[]
+            }
+        },
+        // 解决延迟问题 避免先读数据然后才拿到接口的数据 导致数据没有获取到
+        computed:{
+            username(){
+                return this.$store.state.username;
+            },
+            cartCount(){
+                return this.$store.state.cartCount;
             }
         },
         // 过滤器 一般用在金额格式化 日期格式化
@@ -136,6 +145,13 @@
             goToCart(){
                 // 跳转路由
                 this.$router.push('/cart');
+            },
+            goToLogin(){
+                this.$router.push('./login')
+            },
+            exit(){
+                this.$store.state.username ='';
+                this.$router.push('/#/index');
             }
         }
     }
@@ -166,6 +182,7 @@
          background-color: #FF6600;
          text-align: center;
          color: #ffffff;
+         margin-right:0;
          .icon-cart{
              @include bgImg(16px,16px,'D:/study/前端/mimall/public/imgs/icon-cart.png');
              margin-right: 4px;

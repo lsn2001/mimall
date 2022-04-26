@@ -4,6 +4,10 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios' // 可以将axios对象挂载到Vue实例上
 import VueLazyload from 'vue-lazyload'
+import VueCookie from 'vue-cookie'
+import store from './store'
+
+
 // import env from './env'
 
 const mock = false;
@@ -39,6 +43,8 @@ axios.defaults.timeout = 8000;
 axios.interceptors.response.use(function (response) {
    // response.data 才是获取到的值
   let res = response.data;
+  // 获取哈希路由 哈希路由的形式是#/为前缀的 
+  let path = location.hash;
   // 状态码等于0为成功
   if (res.status == 0) {
     return res.data;
@@ -46,13 +52,18 @@ axios.interceptors.response.use(function (response) {
   // 状态码等于10 未登录成功 这个状态码是前后端共同规定的 可以改变
   else if(res.status == 10)
   {
+    if (path !='#/index')
     // 未登录则跳转到登录页面
     window.location.href = '/#/login';  // 需要完整路径
+  }
+  else {
+    return Promise.reject(res);
   }
 })
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
+Vue.use(VueCookie);
 // 图片加载过程中会有加载动画
 Vue.use(VueLazyload, {
   loading:'/imgs/loading-svg/loading-bubbles.svg'
@@ -62,5 +73,6 @@ new Vue({
   // 名字一样时可以省略 属性: 的格式 
   // 如果使用import Router from './router' 则需要在new Vue里使用 Router: router 的格式才能加载router
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
