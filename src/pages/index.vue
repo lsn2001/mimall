@@ -153,7 +153,7 @@
                 
             </div>
             <div class="product-box">
-                <div class="container   ">
+                <div class="container">
                     <h2>手机</h2>
                     <div class="wrapper">
                         <div class="banner-left">
@@ -343,21 +343,31 @@ import 'D:/study/前端/mimall/node_modules/swiper/css/swiper.css'
             })
         },
         
-        /*  添加购物车功能
-            addCart(){
-            this.axios.post('./cart',{
+        //  添加购物车功能
+            addCart(id){
+            this.axios.post('./carts',{
                 productId:id,
                 selected:true
             }).then((res)=>{
-
-            }).catch((res)=>{
+                if(this.$store.state.username=='')
+                {
+                    this.$store.state.cartCount = 0;
+                    alert('请登录后再进行操作');
+                    this.$router.push('/login');
+                }
+                else{
+                    this.showModal=true;
+                    this.$store.dispatch('saveCartCount',res.cartTotalQuantity); 
+                }
+                
+            }).catch(()=>{
                 this.showModal=true;
             })
-        } */
-            addCart(id){
+        },
+         /*    addCart(id){
                 this.showModal = true;
                 
-            },
+            }, */
             goToCart(){
                 // 路由跳转页面
                 this.$router.push('./cart');
@@ -483,6 +493,7 @@ import 'D:/study/前端/mimall/node_modules/swiper/css/swiper.css'
                 font-size: $fontF;
                 height:21px;
                 line-height: 21px;
+                padding-bottom: 25px;
                 color: $colorB;
             }
             .wrapper{

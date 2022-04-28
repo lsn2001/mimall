@@ -76,7 +76,7 @@ export default {
             from:'login'
           }
         }); */
-        this.$router.push('./index');
+        this.$router.push('/index');
       }).catch((error)=>{
         console.log(error.message);
       })

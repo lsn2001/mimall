@@ -14,7 +14,7 @@
                     <a href="javascript:;" v-if="!username" @click="goToLogin">登录</a>
                     <a href="javascript:;" @click="exit" v-if="username">退出</a>
                     <a href="javascript:;" v-if="username">我的订单</a>
-                    <a href="javascript:;" v-if="!username">注册</a>
+                    <a href="javascript:;" @click="goToLogin" v-if="!username">注册</a>
                     <a href="javascript:;" class="my-cart" @click="goToCart"><span class="icon-cart"></span>购物车({{cartCount}})</a>
                 </div>
             </div>            
@@ -147,10 +147,11 @@
                 this.$router.push('/cart');
             },
             goToLogin(){
-                this.$router.push('./login')
+                this.$router.push('/login')
             },
             exit(){
                 this.$store.state.username ='';
+                this.$store.state.cartCount = 0;
                 this.$router.push('/#/index');
             }
         }
@@ -196,45 +197,6 @@
              position: relative;
              height:112px;
              @include flex();
-             .header-logo{
-                 display: inline-block;
-                 width: 55px;
-                 height: 55px;
-                 background-color: #FF6600;
-                 a{
-                     display: inline-block;
-                     width:110px;
-                     height: 55px;
-                     /* 利用伪类设置两张图片 */
-                     &:before{
-                        //  占位
-                         content:' ';
-                         @include bgImg(55px,55px,'D:/study/前端/mimall/public/imgs/mi-logo.png',55px);
-                         /* display: inline-block;
-                         width: 55px;
-                         height: 55px;
-                         background: url('D:/study/前端/mimall/public/imgs/mi-logo.png') no-repeat center;
-                         background-size: 55px; */
-                         transition: margin .2s;
-                         
-                     }
-                     &:after{
-                         content:' ';
-                         @include bgImg(55px,55px,'D:/study/前端/mimall/public/imgs/mi-home.png',55px);
-                         /* display: inline-block;
-                         width: 55px;
-                         height: 55px;
-                         background: url('D:/study/前端/mimall/public/imgs/mi-home.png') no-repeat center;
-                         background-size: 55px; */
-                         
-                     }
-                     &:hover::before{
-                         margin-left:-55px;
-                         /* 指定过渡元素 */
-                         transition: margin .2s;
-                    }
-                }
-            }
             .header-menu{
                 display:inline-block;
                 padding-left: 209px;

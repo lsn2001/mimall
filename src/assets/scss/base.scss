@@ -1,3 +1,4 @@
+@import './mixin.scss';
 .container{
     position: relative;
     width: 1226px;
@@ -15,4 +16,59 @@ input{
     outline:none;
     box-sizing: border-box;
     font-size: 14px;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+// 清除浮动
+.clearfix::before,.clearfix::after{
+    content: ' ';
+    display: table;
+
+}
+.clearfix::after{
+    clear: both;
+    
+}
+.header-logo{
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    background-color: #FF6600;
+    a{
+        display: inline-block;
+        width:110px;
+        height: 55px;
+        /* 利用伪类设置两张图片 */
+        &:before{
+           //  占位
+            content:' ';
+            @include bgImg(55px,55px,'D:/study/前端/mimall/public/imgs/mi-logo.png',55px);
+            /* display: inline-block;
+            width: 55px;
+            height: 55px;
+            background: url('D:/study/前端/mimall/public/imgs/mi-logo.png') no-repeat center;
+            background-size: 55px; */
+            transition: margin .2s;
+            
+        }
+        &:after{
+            content:' ';
+            @include bgImg(55px,55px,'D:/study/前端/mimall/public/imgs/mi-home.png',55px);
+            /* display: inline-block;
+            width: 55px;
+            height: 55px;
+            background: url('D:/study/前端/mimall/public/imgs/mi-home.png') no-repeat center;
+            background-size: 55px; */
+            
+        }
+        &:hover::before{
+            margin-left:-55px;
+            /* 指定过渡元素 */
+            transition: margin .2s;
+       }
+   }
 }

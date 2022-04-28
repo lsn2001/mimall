@@ -1,8 +1,8 @@
 <template>
     <div class="product">
-        <product-param>
+        <product-param v-bind:title="product.name">
             <template v-slot:buy>
-                <button class="btn">立即购买</button>
+                <button class="btn" @click="buy">立即购买</button>
             </template>
         </product-param>
         <div class="content">
@@ -25,6 +25,7 @@
             <div class="item-bg-2"></div>
             <div class="item-bg-3"></div>
             <div class="item-swiper">
+                <!-- 轮播图 -->
                 <swiper :options="swiperOption">
                     <swiper-slide><img src="/imgs/product/gallery-2.png" alt=""></swiper-slide>
                     <swiper-slide><img src="/imgs/product/gallery-3.png" alt=""></swiper-slide>
@@ -39,17 +40,14 @@
             <div class="item-video">
                 <h2>60帧超慢动作摄影<br/>慢慢回味每一瞬间的精彩</h2>
                 <p>后置960帧电影般超慢动作视频，将眨眼间的美妙展现得淋漓尽致！<br/>更能AI 精准分析视频内容，15个场景智能匹配背景音效。</p>
-                <!-- <div class="video-bg" @click="showSlide='slideDown'"></div> -->
-                <div class="video-bg" @click="showSlide=true"></div>
-                <!-- <div class="video-box" v-show="showSlide"> -->
-                <div class="video-box">
+                <!-- 这里的注释都是animation实现动画 -->
+                <div class="video-bg" @click="showSlide='slideDown'"></div>
+                <div class="video-box" v-show="showSlide">
                 <!-- 定义遮罩 -->
                 <div class="overlay" v-if="showSlide"></div>
                 <!-- 绑定动态的类名 控制动画的播放动画和关闭动画 -->
-                <!-- <div class="video" v-bind:class="showSlide"> -->
-                  <div class="video" v-bind:class="{'slide':showSlide}">
-                    <!-- <span class="icon-close" @click="closeVideo"></span> -->
-                    <span class="icon-close" @click="showSlide=false"></span>
+                  <div class="video" v-bind:class="showSlide"> 
+                    <span class="icon-close" @click="closeVideo"></span>
                     <!-- muted和autoplay要同时使用才能自动播放 controls是左下角播放视频的控件 控制视频暂停和播放 -->
                     <video src="/imgs/product/video.mp4" muted autoplay controls="controls"></video>
                 </div>
@@ -73,8 +71,7 @@
     },
     data(){
       return {
-        showSlide:false,
-        /* showSlide:'',//控制动画效果 */
+        showSlide:'',//控制动画效果（animation实现动画） 
         product:{},//商品信息
         swiperOption:{
           autoplay:true,
@@ -93,17 +90,19 @@
     },
     methods:{
       getProductInfo(){
+        // 参数是route 路由跳转是router
         let id = this.$route.params.id;
-        this.axios.get('/products/${id}').then((res)=>{
+        // 动态字符串模板``
+        this.axios.get(`/products/${id}`).then((res)=>{
           this.product = res;
         })
       },
       buy(){
         let id = this.$route.params.id;
-        this.$router.push('/detail/${id}');
+        this.$router.push(`/detail/${id}`);
       },
       closeVideo(){
-        // 点击关闭图标 将
+        // 点击关闭图标 将通过showSlide变量绑定video的class值
         this.showSlide='slideUp';
         let vi = document.getElementsByTagName('video')[0]
         vi.pause();
@@ -201,7 +200,7 @@
             opacity:.4;
             z-index:10;
           }
-          // 将div元素匀速向下运动
+          // 将div元素匀速向下运动（animation实现动画）
           @keyframes slideDown{
             from{
               top:-50%;
@@ -233,20 +232,14 @@
             z-index:10;
             width:1000px;
             height:536px;
-            /* opacity:1;
-            // animation适用于复杂的动画效果
+            opacity:1;
+            // animation适用于复杂的动画效果（animation实现动画）
             &.slideDown{
               animation:slideDown .6s linear;
               top:50%;
             }
             &.slideUp{
               animation:slideUp .6s linear;
-            } */
-            opacity:0;
-            transition: all .6s;
-            &.slide{
-              top:50%;
-              opacity: 1;
             }
             .icon-close{
               position:absolute;

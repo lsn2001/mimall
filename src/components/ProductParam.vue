@@ -3,7 +3,7 @@
     <div class="nav-bar" :class="{'is_fixed':isFixed}">
         <div class="container">
             <div class="pro-title">
-                小米8
+                {{title}}
             </div>
             <div class="pro-param">
                 <a href="javascript:;">概述</a><span>|</span>
@@ -18,7 +18,11 @@
 
 export default {
     name:'nav-bar',
+    props:{
+        title:String
+    },
     data(){
+        
         return{
             isFixed:false
         }
@@ -48,6 +52,7 @@ export default {
         line-height: 70px;
         border: 1px solid $colorH;
         background-color: #FFFFFF;
+        z-index: 10;
         &.is_fixed{
             // 固定定位 吸顶
             position: fixed;

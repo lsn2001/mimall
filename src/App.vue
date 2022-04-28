@@ -22,14 +22,15 @@ export default {
      this.getCartCount();
   },
   methods:{
+    // res需要初始化避免 未登录或者购物车没商品时传入接口时 程序报错
     getUser(){
-      this.axios.get('./user').then((res)=>{
+      this.axios.get('./user').then((res={})=>{
         // 将接口的值保存到vuex中去
         this.$store.dispatch('saveUserName',res.username);
       })
     },
     getCartCount(){
-      this.axios.get('./carts/products/sum').then((res)=>{
+      this.axios.get('./carts/products/sum').then((res=0)=>{
         this.$store.dispatch('saveCartCount',res);
       })
     }

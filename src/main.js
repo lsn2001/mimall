@@ -54,7 +54,8 @@ axios.interceptors.response.use(function (response) {
   {
     if (path !='#/index')
     // 未登录则跳转到登录页面
-    window.location.href = '/#/login';  // 需要完整路径
+      window.location.href = '/#/login';  // 需要完整路径
+      return Promise.reject(res);
   }
   else {
     return Promise.reject(res);

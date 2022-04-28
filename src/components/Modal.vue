@@ -8,7 +8,7 @@
                 <a href="javascript:;" class="icon-close" v-on:click="$emit('cancel')"></a>
             </div>
             <div class="modal-body">
-                <!-- 插槽 实现动态-->
+                <!-- 插槽 实现动态输出弹框数据-->
                 <slot name="body"></slot>
             </div>
             <div class="modal-footer">
