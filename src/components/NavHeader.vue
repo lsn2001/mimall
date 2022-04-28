@@ -130,7 +130,7 @@
                     // get需要加params进行传参 post不用
                     params:{
                         categoryId:'100012',
-                          pageSize:20 //只取六条数据 
+                          pageSize:20 
                     }
                 }).then((res)=>{
                      if(res.list.length>=6){
