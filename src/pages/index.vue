@@ -347,7 +347,7 @@ import 'D:/study/前端/mimall/node_modules/swiper/css/swiper.css'
             addCart(id){
             this.axios.post('./carts',{
                 productId:id,
-                selected:true
+                selected:true // 加入购物车 则默认选中
             }).then((res)=>{
                 if(this.$store.state.username=='')
                 {

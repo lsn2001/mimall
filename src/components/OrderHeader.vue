@@ -9,7 +9,7 @@
                 <h2>{{title}}<slot name="tip"></slot></h2>
             </div>
             <div class="username">
-                <a href="javascript:;">jack</a>
+                <a href="javascript:;">{{this.$store.state.username}}</a>
             </div>
         </div> 
     </div>
