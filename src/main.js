@@ -4,6 +4,8 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios' // 可以将axios对象挂载到Vue实例上
 import VueLazyload from 'vue-lazyload'
+import { Message } from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import VueCookie from 'vue-cookie'
 import store from './store'
 
@@ -52,12 +54,14 @@ axios.interceptors.response.use(function (response) {
   // 状态码等于10 未登录成功 这个状态码是前后端共同规定的 可以改变
   else if(res.status == 10)
   {
-    if (path !='#/index')
-    // 未登录则跳转到登录页面
+    if (path != '#/index') {
+      // 未登录则跳转到登录页面
       window.location.href = '/#/login';  // 需要完整路径
+    }
       return Promise.reject(res);
   }
   else {
+    Message.warning(res.msg);
     return Promise.reject(res);
   }
 })
@@ -65,6 +69,7 @@ axios.interceptors.response.use(function (response) {
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
 Vue.use(VueCookie);
+Vue.prototype.$message = Message; // 利用原型的方式扩展组件    
 // 图片加载过程中会有加载动画
 Vue.use(VueLazyload, {
   loading:'/imgs/loading-svg/loading-bubbles.svg'

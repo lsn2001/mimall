@@ -120,9 +120,15 @@
         },
         mounted(){
             this.getProductList();
+            let params = this.$route.params;
+            // 从登录界面跳转到首页的才进行调用购物车数量
+            if(params && params.from == 'login'){
+               this.getCartCount(); 
+            }
         },
         methods:{
             login(){
+                // 跳转路由用$router全局路由 在全局路由中寻找路由然后跳转 获取参数用$route
                 this.$router.push('/login')
             },
             getProductList(){
@@ -142,17 +148,28 @@
                     
                 })
             },
+            getCartCount(){
+                this.axios.get('./carts/products/sum').then((res=0)=>{
+                this.$store.dispatch('saveCartCount',res);
+            })
+            },
+            // 跳转购物车页面
             goToCart(){
                 // 跳转路由
                 this.$router.push('/cart');
-            },
+            }, 
+            // 跳转登录页面
             goToLogin(){
                 this.$router.push('/login')
             },
+            // 退出功能
             exit(){
-                this.$store.state.username ='';
-                this.$store.state.cartCount = 0;
-                this.$router.push('/#/index');
+                this.axios.post('/user/logout').then(()=>{
+                    this.$message.success('退出成功');
+                    this.$cookie.set('userId','',{expires:'-1'}); // 清空cookie的数据
+                    this.$store.dispatch('saveUserName',''); // 清空用户名
+                    this.$store.dispatch('saveCartCount','0'); // 清空购物车数量
+                })
             }
         }
     }

@@ -10,9 +10,11 @@
             <span class="checked">帐号登录</span><span class="sep-line">|</span><span>扫码登录</span>
           </h3>
           <div class="input">
+            <!-- v-model双向绑定 可以通过this.username来获取输入框的username值 -->
             <input type="text" placeholder="请输入帐号" v-model="username">
           </div>
           <div class="input">
+            <!-- v-model双向绑定 可以通过this.password来获取输入框的password值 -->
             <input type="password" placeholder="请输入密码" v-model="password">
           </div>
           <div class="btn-box">
@@ -63,20 +65,33 @@ export default {
         username,
         password
       }).then((res)=>{
-        // 设置用户id expires后为 过期的期限
+        // 设置用户id expires后为 过期的期限 Session表示会话状态 浏览器关闭之后才结束
         this.$cookie.set('userId',res.id,{expires:'Session'});
         // 派发一个actions事件
         this.$store.dispatch('saveUserName',res.username);
-
+        this.$message.success('登录成功');
           
         /* this.saveUserName(res.username); */
-        /* this.$router.push({
+        /* 
+          params传参 需要路由的name值 而query传参 需要路由的path值 
+        */
+        
+        // params传参 输入流传参 相当于post传参
+        this.$router.push({
           name:'index',
           params:{
             from:'login'
           }
+        });
+
+        // query传参 明文传参 相当于get传参
+        /* this.$router.push({
+          path:'/index',
+          params:{
+            from:'login'
+          }
         }); */
-        this.$router.push('/index');
+        // this.$router.push('/index');
       }).catch((error)=>{
         console.log(error.message);
       })
@@ -87,12 +102,11 @@ export default {
       /* this.$message.success('功能暂未开发');
       return; */
       this.axios.post('/user/register',{
-        username:'lsn',
-        password:'lsn',
-        email:'lsn@163.com'
+        username:this.username,
+        password:this.password,
       }).then(()=>{
-        /* this.$message.success('注册成功'); */
-        alert("注册成功");
+        this.$message.success('注册成功');
+        
       })
     }
   }

@@ -63,6 +63,8 @@
   import OrderHeader from './../components/OrderHeader'
   import ServiceBar from './../components/ServiceBar'
   import NavFooter from './../components/NavFooter'
+  import {Message} from 'element-ui'
+  import 'element-ui/lib/theme-chalk/index.css'
   export default{
     name:'index',
     components:{
@@ -94,7 +96,7 @@
             selected = item.productSelected;
         if(type == '-'){
           if(quantity == 1){
-            this.$message.warning('商品至少保留一件');
+            Message.warning('商品至少保留一件');
             return;
           }
           --quantity;

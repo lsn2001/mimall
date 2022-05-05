@@ -18,8 +18,11 @@ export default {
     }
   },
   mounted(){
-     this.getUser();
-     this.getCartCount();
+    if(this.$cookie.get('userId')){
+      this.getUser();
+      this.getCartCount();
+    }
+     
   },
   methods:{
     // res需要初始化避免 未登录或者购物车没商品时传入接口时 程序报错
