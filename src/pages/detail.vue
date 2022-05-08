@@ -106,7 +106,7 @@ export default{
         if(this.$store.state.username=='')
         {
             this.$store.state.cartCount = 0;
-            alert('请登录后再进行操作');
+            this.$message.warning('请登录后再进行操作');
             this.$router.push('/login');
         }
         else{

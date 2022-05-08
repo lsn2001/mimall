@@ -360,8 +360,6 @@ import 'D:/study/前端/mimall/node_modules/swiper/css/swiper.css'
                     this.$store.dispatch('saveCartCount',res.cartTotalQuantity); 
                 }
                 
-            }).catch(()=>{
-                this.showModal=true;
             })
         },
          /*    addCart(id){

@@ -9,6 +9,7 @@
            <a href="#">MIUI</a><span>|</span>
            <a href="#">米家</a><span>|</span>
            <a href="#">米聊</a><span>|</span>
+           <a href="#">米奇妙妙屋</a>
        </div>
        
     </div>

@@ -54,6 +54,7 @@ axios.interceptors.response.use(function (response) {
   // 状态码等于10 未登录成功 这个状态码是前后端共同规定的 可以改变
   else if(res.status == 10)
   {
+    Message.warning(res.msg);
     if (path != '#/index') {
       // 未登录则跳转到登录页面
       window.location.href = '/#/login';  // 需要完整路径
@@ -64,6 +65,10 @@ axios.interceptors.response.use(function (response) {
     Message.warning(res.msg);
     return Promise.reject(res);
   }
+}, (error) => {
+  let res = error.response;
+  Message.error(res.data.message);
+  return Promise.reject(error);
 })
 
 Vue.config.productionTip = false;
