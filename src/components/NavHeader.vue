@@ -279,6 +279,7 @@
                                 color:$colorA;
 
                             }
+                            // 在嵌套时候可以使用 & 来引用父元素
                             &:before{
                             content:' ';
                             position:absolute;

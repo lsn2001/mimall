@@ -191,7 +191,6 @@
           width:1226px;
           height:540px;
           margin:0 auto 120px;
-          cursor:pointer;
         }
         .video-box{
           .overlay{

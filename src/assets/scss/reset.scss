@@ -1,6 +1,8 @@
 body,div,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,a,input,button,textarea,select{
+  /* 取消默认样式 */
   margin: 0;
   padding: 0;
+  // 取消轮廓
   outline: none;
 }
 html,body{
@@ -11,9 +13,11 @@ html,body{
   font-size: 12px;
 }
 a{
+  // 取消下滑线
   text-decoration: none;
 }
 ul,li{
+  // 列表前无标记
   list-style: none;
 }
 input{

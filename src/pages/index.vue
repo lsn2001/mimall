@@ -406,7 +406,6 @@ import 'D:/study/前端/mimall/node_modules/swiper/css/swiper.css'
                                 content:' ';
                                 @include bgImg(10px,15px,'D:/study/前端/mimall/public/imgs/icon-arrow.png');
                             }
-                            
                         }
                         &:hover{
                                 background-color: #FF6600;

@@ -72,8 +72,14 @@ export default {
                 span{
                     margin: 0 10px;
                 }
+                
                 a{
+                  display: inline;
                   color:$colorC;
+                  // last-child后面不允许有兄弟结点，这里a标签后面还有个button按钮，a:last-of-type是同级结构内最后出现的a元素
+                  &:last-of-type{
+                    margin-right: 10px;
+                }
                 }
                 
             }
